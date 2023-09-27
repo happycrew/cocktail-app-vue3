@@ -1,5 +1,13 @@
 <script setup>
-import AppLayout from '../components/AppLayout.vue';
+import AppLayout from '@/components/AppLayout.vue';
+import { useRootStore } from '../stores/root';
+import { storeToRefs } from 'pinia';
+
+const rootStore = useRootStore();
+const test = rootStore.getIngredients();
+
+const { ingredients } = storeToRefs(rootStore);
+
 </script>
 
 <template>
