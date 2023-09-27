@@ -1,0 +1,20 @@
+.select {
+  .el-input__wrapper {
+    background-color: $background;
+    color: green;
+  }
+  .el-input__inner {
+    color: $text;
+  }
+}
+
+.el-select-dropdown {
+  background-color: $background;
+
+  &__item {
+    color: $text;
+    &:hover {
+      color: black;
+    }
+  }
+}
