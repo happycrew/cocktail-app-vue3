@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 import AppLayout from '@/components/AppLayout.vue';
 import CocktailThumb from '../components/CocktailThumb.vue';
 import { useRootStore } from '../stores/root';
@@ -8,11 +7,10 @@ import { storeToRefs } from 'pinia';
 const rootStore = useRootStore();
 rootStore.getIngredients();
 
-const { ingredients, cocktails } = storeToRefs(rootStore);
-const ingredient = ref(null);
+const { ingredients, cocktails, ingredient } = storeToRefs(rootStore);
 
 function getCocktail() {
-  rootStore.getCocktails(ingredient.value);
+  rootStore.getCocktails(rootStore.ingredient);
 }
 </script>
 
@@ -25,9 +23,11 @@ function getCocktail() {
         <div class="select-wrapper">
           <el-select
             class="select"
-            v-model="ingredient"
+            v-model="rootStore.ingredient"
             placeholder="Choose main ingredient"
             size="large"
+            filterable
+            allow-create
             @change="getCocktail">
             <el-option
               v-for="item in ingredients"
@@ -59,17 +59,6 @@ function getCocktail() {
 <style lang="scss" scoped>
 @import '../assets/styles/main.scss';
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.info {
-  padding: 80px 0;
-  text-align: center;
-}
-
 .select-wrapper {
   padding-top: 50px;
 }
@@ -93,10 +82,10 @@ function getCocktail() {
 
 .cocktails {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   margin-top: 60px;
-  max-height: 600px;
+  max-height: 400px;
   overflow-y: auto;
 
 }
