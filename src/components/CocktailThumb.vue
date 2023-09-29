@@ -21,17 +21,21 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import '../assets/styles/main.scss';
 .root {
-  width: calc((100% - 76px) / 3);
-  padding-right: 38px;
+  width: calc((100% - 76px)/3);
+  margin-right: 38px;
   padding-bottom: 20px;
   &:nth-child(3n + 3) {
-    padding-right: 0;
+    margin-right: 0;
   }
 }
 
 .name {
   padding-top: 15px;
   letter-spacing: 0.1em;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pic {
