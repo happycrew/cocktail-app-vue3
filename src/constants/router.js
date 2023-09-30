@@ -1,4 +1,4 @@
-export const ROUTES_PATHS = {
+export const ROUTER_PATHS = {
   HOME: '/',
   COCKTAIL: '/cocktails/:rid',
   COCKTAIL_RANDOM: '/random',
