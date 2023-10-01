@@ -11,7 +11,6 @@ const props = defineProps({
   },
   backFunc: {
     type: Function,
-    required: true,
   },
   isBackButtonVisible: {
     type: Boolean,
@@ -28,9 +27,12 @@ const goForCocktailRandom = () => {
   router.push(ROUTER_PATHS.COCKTAIL_RANDOM);
 
   if (routeName.value === ROUTER_PATHS.COCKTAIL_RANDOM) {
-    console.log('yes');
     router.go();
   }
+};
+
+const goBack = () => {
+  props.backFunc ? props.backFunc() : router.go(-1);
 };
 </script>
 
@@ -45,7 +47,7 @@ const goForCocktailRandom = () => {
           :icon="Back"
           circle
           class="back"
-          @click="backFunc"></el-button>
+          @click="goBack"></el-button>
         <el-button class="btn" @click="goForCocktailRandom"
           >Get random cocktail</el-button
         >
