@@ -8,20 +8,20 @@ const props = defineProps({
 </script>
 
 <template>
-  <RouterLink :to="`/cocktails/${cocktail.idDrink}`">
-    <div class="root">
+  <div class="root">
+    <RouterLink :to="`/cocktails/${cocktail.idDrink}`">
       <div
         :style="`background-image: url(${cocktail.strDrinkThumb})`"
         class="pic"></div>
       <div class="name">{{ cocktail.strDrink }}</div>
-    </div>
-  </RouterLink>
+    </RouterLink>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import '../assets/styles/main.scss';
 .root {
-  width: calc((100% - 76px)/3);
+  width: calc((100% - 76px) / 3);
   margin-right: 38px;
   padding-bottom: 20px;
   &:nth-child(3n + 3) {
